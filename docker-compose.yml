@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  postgres:
+    container_name: gb_news
+    image: postgres
+    environment:
+      - POSTGRES_DB=gb_news
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=NnVvGET
+    restart: unless-stopped
+    volumes:
+      - ./etc/db/data:/var/lib/postgresql/data1
+    ports:
+      - '5435:5432'

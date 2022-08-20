@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
-import { News } from 'src/news/entities/news.entity';
+import { News } from '../db/entities/news.entity';
+import { join } from 'path';
 
 @Injectable()
 export class MailService {
@@ -13,7 +14,7 @@ export class MailService {
       return await this.mailerService.sendMail({
         to: 'yf_dev_test@mail.ru',
         subject: 'Тестовое письмо',
-        template: './test',
+        template: `${join(process.cwd(),'dist/mail/templates/test')}`,
       });
     } catch (error) {
       console.log(error);
@@ -37,12 +38,12 @@ export class MailService {
     }
   }
 
-  updateNewsLogMessage(addressTo: string, array:News[]) {
-    return this.mailerService
+ async updateNewsLogMessage(addressTo: string, array:News[]) {
+    return await this.mailerService
       .sendMail({
         to: addressTo,
         subject: 'Обновление данных!',
-        template: 'update',
+        template: `${join(process.cwd(),'dist/mail/templates/update')}`,
         context: {
           news:array[0],
           updatedNews:array[1]

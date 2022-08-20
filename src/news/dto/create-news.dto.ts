@@ -14,7 +14,4 @@ export class CreateNewsDto {
   @IsOptional()
   thumbnail: string;
 
-  @IsOptional()
-  @IsString()
-  attachment: string;
 }
