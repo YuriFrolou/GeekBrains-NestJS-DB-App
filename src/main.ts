@@ -7,6 +7,7 @@ import { LoggingTimeInterceptor } from './interceptors/logging-time/logging-time
 import * as expressHbs from 'express-handlebars';
 import * as hbs from 'hbs';
 
+
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.useGlobalPipes(new ValidationPipe());
@@ -35,7 +36,6 @@ async function bootstrap() {
     }
 
   });
-
   app.setViewEngine('hbs');
   await app.listen(3000);
 }

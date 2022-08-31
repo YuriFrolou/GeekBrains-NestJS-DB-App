@@ -18,7 +18,4 @@ export class CreateCommentDto {
   @MinLength(10)
   text: string;
 
-  @IsOptional()
-  @IsString()
-  attachment: string;
 }
